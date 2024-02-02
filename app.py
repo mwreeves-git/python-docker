@@ -1,6 +1,6 @@
 ### Conda ###
 # conda activate docker_3.9
-# cd C:\Users\mwree\OneDrive\Documents\git\python-docker
+# cd C:\Users\mwree\OneDrive\Documents\git\birdle-api
 # python -m venv .venv
 
 ### CMD ###
@@ -13,7 +13,7 @@
 # http://localhost:5000/undo?pass=birdlebirdlebirdle
 
 ### CMD ###
-# cd C:\Users\mwree\OneDrive\Documents\git\python-docker
+# cd C:\Users\mwree\OneDrive\Documents\git\birdle-api
 # docker init #### Build the docker file
 # python -m flask run --host=0.0.0.0 #### Run the Flask alone
 # docker compose up --build #### Run the whole docker
@@ -71,7 +71,7 @@ def birdle_add():
             output = 'Bird Not Found'
         conn.close()
     else:
-        output = 'Access Denied'
+        output = 'Access Denied: Wrong Pass'
     return output
 
 @app.route('/undo')
@@ -89,7 +89,7 @@ def birdle_undo():
         bird_count = cursor_data[0]['bird_count']
         output = 'Birdles Today: ' + str(bird_count)
     else:
-        output = 'Access Denied'
+        output = 'Access Denied: Wrong Pass'
     return output
 
 @app.route('/test')
